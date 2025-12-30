@@ -10,7 +10,6 @@ part 'transaction_form_controller.g.dart';
 /// Handles initialization (mode detection) and form submission.
 @riverpod
 class TransactionFormController extends _$TransactionFormController {
-
   /// Initialization Logic:
   /// Automatically detects the [FormMode] based on the arguments passed.
   @override

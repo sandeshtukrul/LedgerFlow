@@ -4,7 +4,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'customer_details_state.freezed.dart';
 
-
 /// Holds the UI state for the Customer Details screen.
 /// Uses [Freezed] for immutability and copyWith support.
 @freezed

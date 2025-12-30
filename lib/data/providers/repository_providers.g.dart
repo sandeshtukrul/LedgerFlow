@@ -7,12 +7,9 @@ part of 'repository_providers.dart';
 // **************************************************************************
 
 String _$customerLocalDataSourceHash() =>
-    r'0cf4663d73d0fe8e9804348867966cde5700dec5';
+    r'2550d25a9efc2789f549e0b4b511d142f42120e4';
 
-/// Provides the singleton instance of the local data source.
-/// 'keepAlive: true' ensures the database connection remains open throughout the app session.
-///
-/// Copied from [customerLocalDataSource].
+/// See also [customerLocalDataSource].
 @ProviderFor(customerLocalDataSource)
 final customerLocalDataSourceProvider =
     Provider<CustomerLocalDataSource>.internal(

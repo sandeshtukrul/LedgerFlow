@@ -31,6 +31,9 @@ dependencies:
 
   lottie: ^3.3.1
 
+  # charts library
+  fl_chart: ^1.1.1
+
 
 dev_dependencies:
   flutter_test:
@@ -62,6 +65,9 @@ flutter:
             weight: 700
 
 dependency_overrides:
+  # FIX: Resolves a version conflict between 'custom_lint' (used by Riverpod) 
+  # and 'hive_ce_generator'. Both depend on different versions of this plugin.
+  # Keep this until both packages update their internal dependencies.
   analyzer_plugin: ^0.13.1
 
 flutter_launcher_icons:

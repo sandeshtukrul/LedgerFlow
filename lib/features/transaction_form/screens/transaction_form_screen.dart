@@ -149,7 +149,7 @@ class _TransactionFormState extends ConsumerState<TransactionForm> {
               const SizedBox(height: 18),
               FormSaveButton(
                 onPressed: formState.status == FormStatus.submitting
-                    ? null  // Disable button while loading
+                    ? null // Disable button while loading
                     : _submitForm,
               ),
               const SizedBox(height: 20),

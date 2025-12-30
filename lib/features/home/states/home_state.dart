@@ -10,6 +10,8 @@ class HomeState with _$HomeState {
   const factory HomeState({
     @Default([]) List<Customer> customers,
     @Default(0) int totalBalance,
+    @Default(0) int totalIncome,
+    @Default(0) int totalExpense,
 
     // Stores the last deleted customer and their index for the Undo operation.
     (Customer, int)? lastDeleted,

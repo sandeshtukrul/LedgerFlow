@@ -8,13 +8,13 @@ class SplashBranding extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final colorScheme = Theme.of(context).colorScheme;
-    
+
     return Center(
-    child: Column(
+        child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          appName, 
+          appName,
           style: textTheme.displayMedium?.copyWith(
             color: colorScheme.onPrimary,
             fontWeight: FontWeight.bold,
@@ -34,12 +34,11 @@ class SplashBranding extends StatelessWidget {
           width: 24,
           height: 24,
           child: CircularProgressIndicator(
-            color: colorScheme.onPrimary, 
+            color: colorScheme.onPrimary,
             strokeWidth: 2,
           ),
         ),
       ],
-    )
-    );
+    ));
   }
 }

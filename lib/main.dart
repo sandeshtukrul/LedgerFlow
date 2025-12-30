@@ -1,5 +1,5 @@
 import 'package:business_transactions/core/bootstrap/bootstrap.dart';
-import 'package:business_transactions/config/my_theme.dart';
+import 'package:business_transactions/config/new_theme.dart';
 import 'package:business_transactions/features/splash/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -7,16 +7,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 /// App Entry Point.
 void main() async {
   // 1. SYSTEM CHECK: Ensures Flutter's native engine is ready before we run any code.
-  // Required for platform channels (Hive, SharedPreferences, etc.) to work 
+  // Required for platform channels (Hive, SharedPreferences, etc.) to work
   // before the UI is rendered.
   WidgetsFlutterBinding.ensureInitialized();
-
 
   // 2. INITIALIZATION LAYER (The "Bootstrap" Pattern):
   // Initialize core services (Database, Configs) before the app starts.
   // This prevents "Database not open" errors on the first screen.
   await bootstrap();
-
 
   // 3. STATE MANAGEMENT ROOT:
   // ProviderScope is the root of the Riverpod state management system.

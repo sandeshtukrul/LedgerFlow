@@ -17,7 +17,6 @@ enum FormStatus { initial, submitting, success, error }
 @freezed
 class TransactionFormState with _$TransactionFormState {
   const factory TransactionFormState({
-
     // Determines what fields are shown and what happens on save
     required FormMode mode,
 
@@ -32,13 +31,12 @@ class TransactionFormState with _$TransactionFormState {
     @Default(TransactionType.sent) TransactionType transactionType,
     String? selectedPaymentMethod,
     DateTime? selectedDateTime,
-    
+
     // The created/updated object returned to the previous screen
     Object? result,
     String? errorMessage,
   }) = _TransactionFormState;
 }
-
 
 /// Helper extension to determine the AppBar title dynamically.
 extension TransactionFromStateX on TransactionFormState {

@@ -39,17 +39,20 @@ class CustomersTabContent extends ConsumerWidget {
       itemBuilder: (_, index) {
         final customer = customerData[index];
         return CustomerListItem(
-          key: ValueKey(customer.id), // Performance optimization for list updates
+          key: ValueKey(
+              customer.id), // Performance optimization for list updates
           customer: customer,
 
           // --- Interaction Callbacks ---
           onTap: () async => await _handleOnTap(context, customer, ref),
 
-          onSendReceiveTap: (updatedCustomer) => _handleSendReceiveTap(context, updatedCustomer, ref),
+          onSendReceiveTap: (updatedCustomer) =>
+              _handleSendReceiveTap(context, updatedCustomer, ref),
 
           onEdit: () async => await _editCustomerName(context, customer, ref),
 
-          onDelete: () async => await _deleteCustomer(context, customer, index, ref),
+          onDelete: () async =>
+              await _deleteCustomer(context, customer, index, ref),
         );
       },
     );
@@ -102,7 +105,7 @@ class CustomersTabContent extends ConsumerWidget {
             customerId: customer.id,
           ),
         ));
-    
+
     // Invalidate provider to force a data refresh when returning from Details screen
     if (context.mounted) {
       ref.invalidate(homeScreenControllerProvider);

@@ -21,36 +21,37 @@ class SendReceiveRadioButtons extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(transactionTypeLabel,
-            style: textTheme.labelLarge?.copyWith(
-              color: colorScheme.onSurfaceVariant,
-              ),
-            ),
+        Text(
+          transactionTypeLabel,
+          style: textTheme.labelLarge?.copyWith(
+            color: colorScheme.onSurfaceVariant,
+          ),
+        ),
         RadioGroup<TransactionType>(
           groupValue: transactionType,
           onChanged: onChanged,
           child: Row(
-          children: <Widget>[
-            Expanded(
-              child: RadioListTile<TransactionType>(
-                title: const Text(send),
-                value: TransactionType.sent,
-                contentPadding: EdgeInsets.zero,
-                visualDensity: VisualDensity.compact,
-                activeColor: colorScheme.primary,
+            children: <Widget>[
+              Expanded(
+                child: RadioListTile<TransactionType>(
+                  title: const Text(send),
+                  value: TransactionType.sent,
+                  contentPadding: EdgeInsets.zero,
+                  visualDensity: VisualDensity.compact,
+                  activeColor: colorScheme.primary,
+                ),
               ),
-            ),
-            Expanded(
-              child: RadioListTile<TransactionType>(
-                title: const Text(receive),
-                value: TransactionType.received,
-                contentPadding: EdgeInsets.zero,
-                visualDensity: VisualDensity.compact,
-                activeColor: colorScheme.primary,
+              Expanded(
+                child: RadioListTile<TransactionType>(
+                  title: const Text(receive),
+                  value: TransactionType.received,
+                  contentPadding: EdgeInsets.zero,
+                  visualDensity: VisualDensity.compact,
+                  activeColor: colorScheme.primary,
+                ),
               ),
-            ),
-          ],
-        ),
+            ],
+          ),
         )
       ],
     );

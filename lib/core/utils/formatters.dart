@@ -2,10 +2,8 @@ import 'package:business_transactions/config/constants/string_const.dart';
 import 'package:business_transactions/models/transaction.dart';
 import 'package:intl/intl.dart';
 
-
 /// Central utility for consistent formatting of Currency, Dates, and Time.
 class Formatters {
-
   // PERFORMANCE OPTIMIZATION (Static Caching):
   // We cache the NumberFormat instance to avoid expensive object creation
   // during list scrolling, which can cause frame drops.
@@ -17,7 +15,7 @@ class Formatters {
   /// Formats an integer amount (Paisa) into a display string (e.g. 1000 -> "₹ 1,000.00").
   static String formatCurrency(
     int amount, {
-    bool includeSign = true,
+    bool includeSign = false,
     String? currencyCode,
     String? locale,
   }) {
@@ -54,7 +52,6 @@ class Formatters {
     String? locale,
     TransactionType? type,
   }) {
-
     // Logic: Use cached formatter unless a specific non-default locale is requested.
     final useDefault = (locale == null || locale == localeENIN) &&
         (currencyCode == null || currencyCode == inrCurrencyCode);
@@ -65,7 +62,7 @@ class Formatters {
             locale: locale ?? localeENIN,
             name: currencyCode ?? inrCurrencyCode,
           );
-    
+
     String sign = '';
     if (includeSign) {
       if (type != null) {

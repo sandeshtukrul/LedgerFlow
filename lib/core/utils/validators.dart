@@ -9,7 +9,6 @@ String? validateRequiredField(String? value, String label) {
   return null;
 }
 
-
 /// Validates currency input fields.
 /// Ensures input is a positive number and handles incomplete states (e.g., "10.").
 String? validateAmount(String? value) {

@@ -15,7 +15,6 @@ class HomeScreenController extends _$HomeScreenController {
   late final CustomerRepository _repository =
       ref.read(customerRepositoryProvider);
 
-
   /// Initialization: Fetches initial data, sorts it, and calculates the total balance.
   @override
   Future<HomeState> build() async {
@@ -41,7 +40,8 @@ class HomeScreenController extends _$HomeScreenController {
   }
 
   /// Adds new transaction to current customer.
-  Future<void> addTransaction(String customerId, Transaction newTransaction) async {
+  Future<void> addTransaction(
+      String customerId, Transaction newTransaction) async {
     if (state.value == null) return;
 
     final originalList = state.value!.customers;
@@ -50,7 +50,8 @@ class HomeScreenController extends _$HomeScreenController {
     if (index == -1) return; // Guard clause if customer not found
 
     final customer = originalList[index];
-    final updatedCustomer = customer.copyWith(transactions: [...customer.transactions, newTransaction],
+    final updatedCustomer = customer.copyWith(
+      transactions: [...customer.transactions, newTransaction],
     );
 
     final newList = List<Customer>.from(originalList);
@@ -64,10 +65,8 @@ class HomeScreenController extends _$HomeScreenController {
     }
   }
 
-
   /// Adds a new customer using Optimistic UI updates.
   Future<void> addCustomer(Customer newCustomer) async {
-
     // Guard clause: If data hasn't loaded yet, we can't add to it.
     if (state.value == null) return;
 
@@ -161,21 +160,44 @@ class HomeScreenController extends _$HomeScreenController {
     }
   }
 
-  /// Helper: Recalculates sort order and total balance whenever the list changes.
+  /// Helper: Recalculates sort order and all totals(Balance, Income, Expense) whenever the list changes.
   void _updateState(HomeState newState) {
     if (state.value == null) return;
 
     final sortedCustomers = List<Customer>.from(newState.customers);
     sortedCustomers.sort((a, b) => b.createdAt.compareTo(a.createdAt));
 
-    final newTotalBalance =
-        sortedCustomers.fold(0, (sum, c) => sum + c.currentBalance);
+    final (newTotalBalance, newIncome, newExpense) =
+        _calculateTotals(sortedCustomers);
 
     // We emit AsyncData to tell the UI: "Here is the new, valid data."
     state = AsyncData(newState.copyWith(
       customers: sortedCustomers,
       totalBalance: newTotalBalance,
+      totalIncome: newIncome,
+      totalExpense: newExpense,
     ));
+  }
+
+  /// Helper: Loops through all transactions to calculate totals
+  (int balance, int income, int expense) _calculateTotals(
+      List<Customer> customers) {
+    int balance = 0;
+    int income = 0;
+    int expense = 0;
+
+    for (final customer in customers) {
+      for (final transaction in customer.transactions) {
+        if (transaction.type == TransactionType.received) {
+          income += transaction.amount;
+          balance += transaction.amount;
+        } else {
+          expense += transaction.amount;
+          balance += transaction.amount;
+        }
+      }
+    }
+    return (balance, income, expense);
   }
 
   /// Clears the Undo cache (called after Snackbar dismissal).

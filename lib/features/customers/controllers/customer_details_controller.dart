@@ -6,12 +6,10 @@ import 'package:business_transactions/config/constants/string_const.dart';
 
 part 'customer_details_controller.g.dart';
 
-
 /// Manages the state for the Customer Details Screen.
 /// Handles CRUD operations for transactions and syncs with the Repository.
 @riverpod
 class CustomerDetailsController extends _$CustomerDetailsController {
-
   /// Initialization: Fetches the specific customer by ID.
   @override
   Future<CustomerDetailsState> build(String customerId) async {

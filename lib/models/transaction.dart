@@ -3,7 +3,6 @@ import 'package:uuid/uuid.dart';
 
 part 'transaction.g.dart';
 
-
 /// Represents a single financial transaction.
 @HiveType(typeId: 1)
 class Transaction extends HiveObject {
@@ -68,7 +67,7 @@ class Transaction extends HiveObject {
 @HiveType(typeId: 2)
 enum TransactionType {
   @HiveField(0)
-  sent,        // Money given (Expense/Debit)
+  sent, // Money given (Expense/Debit)
   @HiveField(1)
-  received,    // Money received (Income/Credit)
+  received, // Money received (Income/Credit)
 }

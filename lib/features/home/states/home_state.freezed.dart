@@ -17,7 +17,9 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$HomeState {
   List<Customer> get customers => throw _privateConstructorUsedError;
-  int get totalBalance =>
+  int get totalBalance => throw _privateConstructorUsedError;
+  int get totalIncome => throw _privateConstructorUsedError;
+  int get totalExpense =>
       throw _privateConstructorUsedError; // Stores the last deleted customer and their index for the Undo operation.
   (Customer, int)? get lastDeleted => throw _privateConstructorUsedError;
 
@@ -36,6 +38,8 @@ abstract class $HomeStateCopyWith<$Res> {
   $Res call(
       {List<Customer> customers,
       int totalBalance,
+      int totalIncome,
+      int totalExpense,
       (Customer, int)? lastDeleted});
 }
 
@@ -56,6 +60,8 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   $Res call({
     Object? customers = null,
     Object? totalBalance = null,
+    Object? totalIncome = null,
+    Object? totalExpense = null,
     Object? lastDeleted = freezed,
   }) {
     return _then(_value.copyWith(
@@ -66,6 +72,14 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
       totalBalance: null == totalBalance
           ? _value.totalBalance
           : totalBalance // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalIncome: null == totalIncome
+          ? _value.totalIncome
+          : totalIncome // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalExpense: null == totalExpense
+          ? _value.totalExpense
+          : totalExpense // ignore: cast_nullable_to_non_nullable
               as int,
       lastDeleted: freezed == lastDeleted
           ? _value.lastDeleted
@@ -86,6 +100,8 @@ abstract class _$$HomeStateImplCopyWith<$Res>
   $Res call(
       {List<Customer> customers,
       int totalBalance,
+      int totalIncome,
+      int totalExpense,
       (Customer, int)? lastDeleted});
 }
 
@@ -104,6 +120,8 @@ class __$$HomeStateImplCopyWithImpl<$Res>
   $Res call({
     Object? customers = null,
     Object? totalBalance = null,
+    Object? totalIncome = null,
+    Object? totalExpense = null,
     Object? lastDeleted = freezed,
   }) {
     return _then(_$HomeStateImpl(
@@ -114,6 +132,14 @@ class __$$HomeStateImplCopyWithImpl<$Res>
       totalBalance: null == totalBalance
           ? _value.totalBalance
           : totalBalance // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalIncome: null == totalIncome
+          ? _value.totalIncome
+          : totalIncome // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalExpense: null == totalExpense
+          ? _value.totalExpense
+          : totalExpense // ignore: cast_nullable_to_non_nullable
               as int,
       lastDeleted: freezed == lastDeleted
           ? _value.lastDeleted
@@ -129,6 +155,8 @@ class _$HomeStateImpl implements _HomeState {
   const _$HomeStateImpl(
       {final List<Customer> customers = const [],
       this.totalBalance = 0,
+      this.totalIncome = 0,
+      this.totalExpense = 0,
       this.lastDeleted})
       : _customers = customers;
 
@@ -144,13 +172,19 @@ class _$HomeStateImpl implements _HomeState {
   @override
   @JsonKey()
   final int totalBalance;
+  @override
+  @JsonKey()
+  final int totalIncome;
+  @override
+  @JsonKey()
+  final int totalExpense;
 // Stores the last deleted customer and their index for the Undo operation.
   @override
   final (Customer, int)? lastDeleted;
 
   @override
   String toString() {
-    return 'HomeState(customers: $customers, totalBalance: $totalBalance, lastDeleted: $lastDeleted)';
+    return 'HomeState(customers: $customers, totalBalance: $totalBalance, totalIncome: $totalIncome, totalExpense: $totalExpense, lastDeleted: $lastDeleted)';
   }
 
   @override
@@ -162,6 +196,10 @@ class _$HomeStateImpl implements _HomeState {
                 .equals(other._customers, _customers) &&
             (identical(other.totalBalance, totalBalance) ||
                 other.totalBalance == totalBalance) &&
+            (identical(other.totalIncome, totalIncome) ||
+                other.totalIncome == totalIncome) &&
+            (identical(other.totalExpense, totalExpense) ||
+                other.totalExpense == totalExpense) &&
             (identical(other.lastDeleted, lastDeleted) ||
                 other.lastDeleted == lastDeleted));
   }
@@ -171,6 +209,8 @@ class _$HomeStateImpl implements _HomeState {
       runtimeType,
       const DeepCollectionEquality().hash(_customers),
       totalBalance,
+      totalIncome,
+      totalExpense,
       lastDeleted);
 
   /// Create a copy of HomeState
@@ -186,12 +226,18 @@ abstract class _HomeState implements HomeState {
   const factory _HomeState(
       {final List<Customer> customers,
       final int totalBalance,
+      final int totalIncome,
+      final int totalExpense,
       final (Customer, int)? lastDeleted}) = _$HomeStateImpl;
 
   @override
   List<Customer> get customers;
   @override
-  int get totalBalance; // Stores the last deleted customer and their index for the Undo operation.
+  int get totalBalance;
+  @override
+  int get totalIncome;
+  @override
+  int get totalExpense; // Stores the last deleted customer and their index for the Undo operation.
   @override
   (Customer, int)? get lastDeleted;
 

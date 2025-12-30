@@ -18,7 +18,6 @@ class DateTimePickerRow extends StatelessWidget {
   /// Chains DatePicker and TimePicker dialogs.
   /// Updates state only if both are selected successfully.
   Future<void> _handleSetDateTime(BuildContext context) async {
-
     // 1. Pick Date
     final DateTime? pickedDate = await showDatePicker(
       context: context,
@@ -37,7 +36,7 @@ class DateTimePickerRow extends StatelessWidget {
 
     if (!context.mounted || pickedTime == null) return;
 
-    // 3. Combine and return 
+    // 3. Combine and return
     onDateTimeChanged(DateTime(
       pickedDate.year,
       pickedDate.month,
@@ -56,38 +55,31 @@ class DateTimePickerRow extends StatelessWidget {
     String formattedTime = Formatters.formatTime(selectedDateTime);
 
     final TextStyle subduedTextStyle = textTheme.bodyMedium!.copyWith(
-      color: colorScheme.onSurfaceVariant
-          .withValues(alpha: 0.7),
+      color: colorScheme.onSurfaceVariant.withValues(alpha: 0.7),
     );
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          padding: const EdgeInsets.symmetric(
-              vertical: 8.0),
-
+          padding: const EdgeInsets.symmetric(vertical: 8.0),
           child: Row(
             children: [
               Icon(
                 Icons.calendar_month_outlined,
                 size: 18,
-                color: colorScheme.onSurfaceVariant
-                    .withValues(alpha: 0.7),
+                color: colorScheme.onSurfaceVariant.withValues(alpha: 0.7),
               ),
               const SizedBox(width: 8),
               Text(
                 formattedDate,
                 style: subduedTextStyle,
               ),
-
               const SizedBox(width: 12),
-
               Icon(
                 Icons.access_time_outlined,
                 size: 18,
-                color: colorScheme.onSurfaceVariant
-                    .withValues(alpha: 0.7),
+                color: colorScheme.onSurfaceVariant.withValues(alpha: 0.7),
               ),
               const SizedBox(width: 8),
               Expanded(
@@ -96,7 +88,6 @@ class DateTimePickerRow extends StatelessWidget {
                   style: subduedTextStyle,
                 ),
               ),
-
               TextButton(
                 onPressed: () => _handleSetDateTime(context),
                 style: TextButton.styleFrom(
@@ -108,9 +99,9 @@ class DateTimePickerRow extends StatelessWidget {
                 child: Text(
                   buttonText,
                   style: textTheme.labelLarge?.copyWith(
-                      color: colorScheme.primary,
-                      fontWeight: FontWeight.bold,
-                      ),
+                    color: colorScheme.primary,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ],

@@ -2,10 +2,8 @@ import 'package:business_transactions/config/constants/string_const.dart';
 import 'package:business_transactions/models/customer.dart';
 import 'package:hive_ce/hive_ce.dart';
 
-
 /// Manages direct interactions with the Hive database for Customers.
 class CustomerLocalDataSource {
-
   final Box<Customer> _box;
 
   CustomerLocalDataSource(this._box);

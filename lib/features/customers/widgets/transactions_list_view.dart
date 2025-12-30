@@ -10,7 +10,6 @@ import 'package:business_transactions/shared/helpers/snackbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-
 /// Renders the list of transactions associated with a customer.
 class TransactionListView extends ConsumerWidget {
   final Customer customer;

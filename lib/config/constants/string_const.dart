@@ -2,6 +2,33 @@
 const String appName = 'LedgerFlow';
 const String appTagline = 'Business Made Simple';
 
+// --- DASHBOARD (NEW FEATURES) ---
+const String txtWelcomeBack = "Welcome back,";
+const String txtCashInHand = "CASH IN HAND";
+const String txtToCollect = "TO COLLECT";
+
+// Dashboard Status Pills
+const String statusPaid = "PAID";
+const String statusUnpaid = "UNPAID";
+const String statusPartial = "PARTIAL";
+const String lblPaid = "Paid: ";
+const String lblDue = "Due: ";
+
+// Dashboard Filters
+const String filterAll = "All Jobs";
+const String filterToCollect = "To Collect";
+const String filterSettled = "Settled";
+
+// Dashboard Sections & Alerts
+const String txtActionRequired = "Action Required";
+const String txtOverdueSuffix = "overdue payments (30+ days)";
+const String txtView = "View";
+const String txtActiveJobs = "Active Jobs";
+const String txtViewHistory = "View History";
+const String txtNoJobs = "No active jobs found";
+const String txtGeneralService =
+    "General Service"; // Fallback for empty vehicle name
+
 // --- APP TITLES & NAVIGATION ---
 const String homeTitlePrefix = 'Welcome';
 const String balanceAmount = 'Balance Amount';
@@ -12,10 +39,10 @@ const String customerDetailsTitle = customerDetailsHeader;
 const String errorTitle = 'Error';
 const String loadingText = 'Loading...';
 
-// Tabs
-const String customers = 'Customers';
-const String vendors = 'Vendors';
-const String history = 'History';
+// --- NAVIGATION TABS ---
+const String navHome = "Home";
+const String navLedger = "Ledger";
+const String navReports = "Reports";
 
 // --- LABELS & HEADERS ---
 // Form & General Labels
@@ -95,7 +122,6 @@ const String customersBox = 'customers';
 const List<String> paymentMethods = ['Cash', 'Bank Transfer', 'UPI'];
 
 // --- ASSET PATHS ---
-const String appbarWavesSvgPath = 'assets/vectors/appbar_waves.svg';
 const String noCustomersLottiePath = 'assets/lottie/no_customers.json';
 const String noTransactionsLottiePath = 'assets/lottie/no_transactions.json';
 
@@ -114,6 +140,7 @@ const String customerNotFoundException = 'Customer not found';
 const String dateFormatMMMddyyyy = 'MMM dd, yyyy';
 const String timeFormathhmma = 'hh:mm a';
 const String dateTimeFormatdMMMyhmma = 'd MMM y, h:mm a';
+const String dateFormatMMMd = 'MMM d';
 
 // Currency & Locale Codes
 const String localeENIN = 'en_IN';
@@ -132,6 +159,6 @@ const String questionMark = '?';
 const String colon = ':';
 
 // --- MISCELLANEOUS ---
-const String proximaNovaFont = 'ProximaNova';
+const String proximaNovaFont = 'Proxima Nova'; // Updated to match UI usage
 const String monospaceFont = 'monospace';
 const String stackTraceLabel = 'StackTrace:';

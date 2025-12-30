@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 /// Helper for displaying standard SnackBar notifications.
 /// Provides consistent styling for Success, Error, and Info messages.
 class SnackbarHelper {
-
   /// Shows a general success message (e.g., "Saved Successfully").
   static void showSuccess(BuildContext context, String message,
       {Duration? duration,
@@ -44,7 +43,7 @@ class SnackbarHelper {
 
     messenger.showSnackBar(SnackBar(
       content: Text(message),
-      behavior: SnackBarBehavior.floating,  // Floats above FABs/BottomBars
+      behavior: SnackBarBehavior.floating, // Floats above FABs/BottomBars
       duration: duration ?? const Duration(seconds: 4),
       action: onAction != null
           ? SnackBarAction(

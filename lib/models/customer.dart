@@ -26,10 +26,10 @@ class Customer extends HiveObject {
     required this.name,
     List<Transaction>?
         transactions, // Can be nullable in constructor for convenience
-  })  : id = id ?? const Uuid().v4(), // Auto-generate a unique ID if none is provided
+  })  : id = id ??
+            const Uuid().v4(), // Auto-generate a unique ID if none is provided
         createdAt = createdAt ?? DateTime.now(),
         transactions = transactions ?? const [];
-
 
   /// Creates a copy of the customer with updated fields.
   /// Essential for immutable state updates in Riverpod.
@@ -46,7 +46,6 @@ class Customer extends HiveObject {
       transactions: transactions ?? this.transactions,
     );
   }
-
 
   /// Calculates the current balance dynamically from the transaction history.
   /// This serves as the "Single Source of Truth," preventing synchronization errors

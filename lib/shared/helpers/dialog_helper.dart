@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 /// Central utility for displaying application-wide dialogs.
 /// Abstracts the UI complexity so screens can just call `await DialogHelper.show...`.
 class DialogHelper {
-
   /// Shows a "Destructive Action" confirmation dialog (e.g., Delete).
   /// Returns [true] if confirmed, [false] otherwise.
   static Future<bool> showConfirmDelete({
@@ -25,8 +24,8 @@ class DialogHelper {
     return confirmed ?? false;
   }
 
-/// Displays an input dialog for editing text (e.g., Customer Name).
-/// Returns the [String] entered by the user, or null if cancelled.
+  /// Displays an input dialog for editing text (e.g., Customer Name).
+  /// Returns the [String] entered by the user, or null if cancelled.
   static Future<String?> showEditTextDialog({
     required BuildContext context,
     required String title,
