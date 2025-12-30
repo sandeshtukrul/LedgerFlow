@@ -4,20 +4,31 @@
 
 import 'package:hive_ce/hive.dart';
 import 'package:business_transactions/models/customer.dart';
+import 'package:business_transactions/models/job.dart';
 import 'package:business_transactions/models/transaction.dart';
+import 'package:business_transactions/models/vehicle.dart';
+import 'package:business_transactions/models/vendor.dart';
 
 extension HiveRegistrar on HiveInterface {
   void registerAdapters() {
     registerAdapter(CustomerAdapter());
+    registerAdapter(JobAdapter());
+    registerAdapter(JobStatusAdapter());
     registerAdapter(TransactionAdapter());
     registerAdapter(TransactionTypeAdapter());
+    registerAdapter(VehicleAdapter());
+    registerAdapter(VendorAdapter());
   }
 }
 
 extension IsolatedHiveRegistrar on IsolatedHiveInterface {
   void registerAdapters() {
     registerAdapter(CustomerAdapter());
+    registerAdapter(JobAdapter());
+    registerAdapter(JobStatusAdapter());
     registerAdapter(TransactionAdapter());
     registerAdapter(TransactionTypeAdapter());
+    registerAdapter(VehicleAdapter());
+    registerAdapter(VendorAdapter());
   }
 }

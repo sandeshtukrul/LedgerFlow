@@ -1,4 +1,5 @@
 import 'package:business_transactions/models/transaction.dart';
+import 'package:business_transactions/models/vehicle.dart';
 import 'package:hive_ce/hive_ce.dart';
 import 'package:uuid/uuid.dart';
 
@@ -18,18 +19,23 @@ class Customer extends HiveObject {
   final DateTime createdAt;
 
   @HiveField(3)
-  final List<Transaction> transactions;
+  final List<Transaction> legacyTransactions;
+
+  @HiveField(4)
+  final List<Vehicle> vehicles;
 
   Customer({
     String? id,
     DateTime? createdAt,
     required this.name,
     List<Transaction>?
-        transactions, // Can be nullable in constructor for convenience
+        legacyTransactions, // Can be nullable in constructor for convenience
+    List<Vehicle>? vehicles,
   })  : id = id ??
             const Uuid().v4(), // Auto-generate a unique ID if none is provided
         createdAt = createdAt ?? DateTime.now(),
-        transactions = transactions ?? const [];
+        legacyTransactions = legacyTransactions ?? const [],
+        vehicles = vehicles ?? const [];
 
   /// Creates a copy of the customer with updated fields.
   /// Essential for immutable state updates in Riverpod.
@@ -37,27 +43,18 @@ class Customer extends HiveObject {
     String? id,
     String? name,
     DateTime? createdAt,
-    List<Transaction>? transactions,
+    List<Transaction>? legacyTransactions,
+    List<Vehicle>? vehicles,
   }) {
     return Customer(
       id: id ?? this.id,
       name: name ?? this.name,
       createdAt: createdAt ?? this.createdAt,
-      transactions: transactions ?? this.transactions,
+      legacyTransactions: legacyTransactions ?? this.legacyTransactions,
+      vehicles: vehicles ?? this.vehicles,
     );
   }
 
-  /// Calculates the current balance dynamically from the transaction history.
-  /// This serves as the "Single Source of Truth," preventing synchronization errors
-  /// that occur when storing a separate 'balance' field.
-  /// This ensures the balance is ALWAYS 100% accurate.
-  int get currentBalance {
-    return transactions.fold<int>(0, (sum, transaction) {
-      if (transaction.type == TransactionType.sent) {
-        return sum - transaction.amount; // Outflow (Debit)
-      } else {
-        return sum + transaction.amount; // Inflow (Credit)
-      }
-    });
-  }
+  /// Helper to check if this customer needs migration
+  bool get hasLegacyData => legacyTransactions.isNotEmpty;
 }

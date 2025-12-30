@@ -23,7 +23,7 @@ final usernameProvider = AutoDisposeProvider<String?>.internal(
 // ignore: unused_element
 typedef UsernameRef = AutoDisposeProviderRef<String?>;
 String _$homeScreenControllerHash() =>
-    r'823d72ba537aa9877bd7ba86fcbf45482defbf6e';
+    r'819eaccd4ef9dcb243fdca0823f8fc72b684d152';
 
 /// Manages the state for the Home Screen (Dashboard).
 /// Handles fetching customers, calculating total balance, and CRUD operations.

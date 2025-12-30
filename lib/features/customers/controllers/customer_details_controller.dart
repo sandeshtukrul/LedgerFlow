@@ -30,7 +30,10 @@ class CustomerDetailsController extends _$CustomerDetailsController {
 
     // Create a new Customer object with the transaction added (Immutability).
     final updatedCustomer = currentState.customer!.copyWith(
-      transactions: [...currentState.customer!.transactions, newTransaction],
+      legacyTransactions: [
+        ...currentState.customer!.legacyTransactions,
+        newTransaction
+      ],
     );
 
     await _updateState(currentState.copyWith(customer: updatedCustomer));
@@ -41,12 +44,13 @@ class CustomerDetailsController extends _$CustomerDetailsController {
     final currentState = state.valueOrNull;
     if (currentState == null || currentState.customer == null) return;
 
-    final updatedTransactions = currentState.customer!.transactions.map((t) {
+    final updatedTransactions =
+        currentState.customer!.legacyTransactions.map((t) {
       return t.id == transactionToUpdate.id ? transactionToUpdate : t;
     }).toList();
 
     final updatedCustomer =
-        currentState.customer!.copyWith(transactions: updatedTransactions);
+        currentState.customer!.copyWith(legacyTransactions: updatedTransactions);
 
     await _updateState(currentState.copyWith(customer: updatedCustomer));
   }
@@ -56,17 +60,17 @@ class CustomerDetailsController extends _$CustomerDetailsController {
     final currentState = state.valueOrNull;
     if (currentState?.customer == null) return;
 
-    final originalIndex = currentState!.customer!.transactions
+    final originalIndex = currentState!.customer!.legacyTransactions
         .indexWhere((t) => t.id == transactionToDelete.id);
 
     if (originalIndex == -1) return;
 
     final updatedTransactions =
-        List<Transaction>.from(currentState.customer!.transactions)
+        List<Transaction>.from(currentState.customer!.legacyTransactions)
           ..removeWhere((t) => t.id == transactionToDelete.id);
 
     final updatedCustomer =
-        currentState.customer!.copyWith(transactions: updatedTransactions);
+        currentState.customer!.copyWith(legacyTransactions: updatedTransactions);
 
     // Update state and store deleted item info for potential restore.
     await _updateState(currentState.copyWith(
@@ -86,11 +90,11 @@ class CustomerDetailsController extends _$CustomerDetailsController {
     final (transactionToRestore, originalIndex) = lastDeletedTransaction;
 
     final restoredTransactions =
-        List<Transaction>.from(currentState!.customer!.transactions)
+        List<Transaction>.from(currentState!.customer!.legacyTransactions)
           ..insert(originalIndex, transactionToRestore);
 
     final customerAfterRestore =
-        currentState.customer!.copyWith(transactions: restoredTransactions);
+        currentState.customer!.copyWith(legacyTransactions: restoredTransactions);
 
     await _updateState(currentState.copyWith(
       customer: customerAfterRestore,

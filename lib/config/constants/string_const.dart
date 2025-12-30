@@ -117,6 +117,9 @@ const String noTransactionsFoundHint =
 // --- DATA & STORAGE ---
 // Hive Box Names
 const String customersBox = 'customers';
+const String jobsBox = 'jobs';
+const String vendorsBox = 'vendors';
+
 
 // Default Data
 const List<String> paymentMethods = ['Cash', 'Bank Transfer', 'UPI'];

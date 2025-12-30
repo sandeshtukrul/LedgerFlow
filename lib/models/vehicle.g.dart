@@ -1,44 +1,41 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'customer.dart';
+part of 'vehicle.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class CustomerAdapter extends TypeAdapter<Customer> {
+class VehicleAdapter extends TypeAdapter<Vehicle> {
   @override
-  final typeId = 0;
+  final typeId = 3;
 
   @override
-  Customer read(BinaryReader reader) {
+  Vehicle read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return Customer(
+    return Vehicle(
       id: fields[0] as String?,
-      createdAt: fields[2] as DateTime?,
       name: fields[1] as String,
-      legacyTransactions: (fields[3] as List?)?.cast<Transaction>(),
-      vehicles: (fields[4] as List?)?.cast<Vehicle>(),
+      number: fields[2] as String?,
+      createdAt: fields[3] as DateTime?,
     );
   }
 
   @override
-  void write(BinaryWriter writer, Customer obj) {
+  void write(BinaryWriter writer, Vehicle obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(4)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
       ..write(obj.name)
       ..writeByte(2)
-      ..write(obj.createdAt)
+      ..write(obj.number)
       ..writeByte(3)
-      ..write(obj.legacyTransactions)
-      ..writeByte(4)
-      ..write(obj.vehicles);
+      ..write(obj.createdAt);
   }
 
   @override
@@ -47,7 +44,7 @@ class CustomerAdapter extends TypeAdapter<Customer> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is CustomerAdapter &&
+      other is VehicleAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

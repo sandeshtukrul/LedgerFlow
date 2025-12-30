@@ -37,7 +37,7 @@ class CustomerListItem extends StatelessWidget {
       ).show(),
       child: ListTileContent(
         title: customer.name,
-        trailing: _TrailingAmount(currentBalance: customer.currentBalance),
+        trailing: _TrailingAmount(currentBalance: 0),
         subtitle: _Subtitle(
           customer: customer,
           onSendReceiveTap: onSendReceiveTap,

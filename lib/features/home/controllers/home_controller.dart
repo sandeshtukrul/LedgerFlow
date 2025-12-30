@@ -23,13 +23,11 @@ class HomeScreenController extends _$HomeScreenController {
     // We sort customers by 'createdAt' (newest first) so the user sees recent activity.
     customers.sort((a, b) => b.createdAt.compareTo(a.createdAt));
 
-    // Calculate total balance across all customers (Asset - Liability)
-    final totalBalance =
-        customers.fold<int>(0, (sum, c) => sum + c.currentBalance);
+
 
     return HomeState(
       customers: customers,
-      totalBalance: totalBalance,
+      totalBalance: 0,
     );
   }
 
@@ -51,7 +49,7 @@ class HomeScreenController extends _$HomeScreenController {
 
     final customer = originalList[index];
     final updatedCustomer = customer.copyWith(
-      transactions: [...customer.transactions, newTransaction],
+      legacyTransactions: [...customer.legacyTransactions, newTransaction],
     );
 
     final newList = List<Customer>.from(originalList);
@@ -187,7 +185,7 @@ class HomeScreenController extends _$HomeScreenController {
     int expense = 0;
 
     for (final customer in customers) {
-      for (final transaction in customer.transactions) {
+      for (final transaction in customer.legacyTransactions) {
         if (transaction.type == TransactionType.received) {
           income += transaction.amount;
           balance += transaction.amount;

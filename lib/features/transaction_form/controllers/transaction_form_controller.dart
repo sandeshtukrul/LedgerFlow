@@ -75,7 +75,7 @@ class TransactionFormController extends _$TransactionFormController {
           );
           // Return new Customer with the initial transaction
           result = Customer(
-              name: customerName.trim(), transactions: [newTransaction]);
+              name: customerName.trim(), legacyTransactions: [newTransaction]);
           break;
 
         case FormMode.addTransaction:

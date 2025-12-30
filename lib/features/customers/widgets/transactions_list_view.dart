@@ -18,7 +18,7 @@ class TransactionListView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    if (customer.transactions.isEmpty) {
+    if (customer.legacyTransactions.isEmpty) {
       return EmptyView(
         lottiePath: noTransactionsLottiePath,
         title: noTransactionsTitle,
@@ -28,9 +28,9 @@ class TransactionListView extends ConsumerWidget {
 
     return ListView.builder(
       padding: EdgeInsets.all(16),
-      itemCount: customer.transactions.length,
+      itemCount: customer.legacyTransactions.length,
       itemBuilder: (_, index) {
-        final transaction = customer.transactions[index];
+        final transaction = customer.legacyTransactions[index];
         return TransactionListItem(
           key: ValueKey(transaction.id), // Optimize list updates
 
